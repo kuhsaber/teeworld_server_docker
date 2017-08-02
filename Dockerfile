@@ -34,4 +34,6 @@ RUN cd /usr/local/teeworlds-${TEEWORLDS_VERSION}-release && \
 
 EXPOSE 8303
 
-CMD ["/usr/local/bin/teeworlds/teeworlds_srv"]
+VOLUME ["/usr/local/teeworlds/serverconfig.cfg"]
+
+CMD ["/usr/local/bin/teeworlds/teeworlds_srv", "-f", "/usr/local/teeworlds/serverconfig.cfg"]
