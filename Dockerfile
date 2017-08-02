@@ -31,5 +31,7 @@ RUN cd /usr/local/bam-${BAM_VERSION} && \
 RUN cd /usr/local/teeworlds-${TEEWORLDS_VERSION}-release && \
 	/usr/local/bin/bam server_release && \
 	ln -nfs /usr/local/teeworlds-${TEEWORLDS_VERSION}-release /usr/local/bin/teeworlds
-	
+
+EXPOSE 8303
+
 CMD ["/usr/local/bin/teeworlds/teeworlds_srv"]
