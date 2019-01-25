@@ -25,9 +25,9 @@ RUN cd ${BAM_PATH}/bam-${BAM_VERSION} && \
 
 # Build Teeworlds base server
 ENV TEEWORLDS_PATH               /usr/local/teeworlds-src
-ENV TEEWORLDS_VERSION            0.6.4
-ENV TEEWORLDS_DOWNLOAD_URL       https://github.com/teeworlds/teeworlds/archive/${TEEWORLDS_VERSION}-release.tar.gz
-ENV TEEWORLDS_DOWNLOAD_SHA256    831afdea9e343cd712382c74b941c6c14adfb9192d32504022b41c2abbb910d7
+ENV TEEWORLDS_VERSION            0.7.2
+ENV TEEWORLDS_DOWNLOAD_URL       https://github.com/teeworlds/teeworlds/archive/${TEEWORLDS_VERSION}.tar.gz
+ENV TEEWORLDS_DOWNLOAD_SHA256    00847425ea8c5add663cafe83d9bb2a17bbc15dc5970ff9237b2046d1c8ed179
 
 RUN curl -fsSL "${TEEWORLDS_DOWNLOAD_URL}" -o teeworlds.tar.gz \
     && echo "${TEEWORLDS_DOWNLOAD_SHA256}  teeworlds.tar.gz" | sha256sum -c - \
@@ -35,9 +35,9 @@ RUN curl -fsSL "${TEEWORLDS_DOWNLOAD_URL}" -o teeworlds.tar.gz \
     && tar -C ${TEEWORLDS_PATH} -zxf teeworlds.tar.gz \
     && rm teeworlds.tar.gz
 
-RUN cd ${TEEWORLDS_PATH}/teeworlds-${TEEWORLDS_VERSION}-release && \
+RUN cd ${TEEWORLDS_PATH}/teeworlds-${TEEWORLDS_VERSION} && \
 	bam server_release && \
-	ln -nfs ${TEEWORLDS_PATH}/teeworlds-${TEEWORLDS_VERSION}-release /usr/local/bin/teeworlds
+	ln -nfs ${TEEWORLDS_PATH}/teeworlds-${TEEWORLDS_VERSION} /usr/local/bin/teeworlds
 
 # Build Teeworlds Basket base server
 ENV TEEWORLDS_BASKET_PATH               /usr/local/teeworlds-basket-src
